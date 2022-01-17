@@ -28,10 +28,10 @@ const Main = () => {
                     <Link to="/">Главная</Link>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                    <Link to="competitions">Competitions</Link>
+                    <Link to="competitions">Лиги</Link>
                 </Menu.Item>
                 <Menu.Item key="3" icon={<VideoCameraOutlined />}>
-                    <Link to="teams">Teams</Link>
+                    <Link to="teams">Команды</Link>
                 </Menu.Item>
             </Menu>
             </Sider>

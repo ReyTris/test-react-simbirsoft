@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import Competitions from './pages/Competitions/Competitions';
+import CompetitionTeam from './pages/CompetitionTeam/CompetitionTeam';
 import Main from './pages/Main/Main';
 import Teams from './pages/Teams/Teams';
 import './App.css';
@@ -11,6 +12,8 @@ function App() {
       <Routes>
         <Route exact path='/' element={<Main/>}>
           <Route exact path='competitions' element={<Competitions/>}>
+            <Route exact path=':id/teams' element={<CompetitionTeam/>}>
+            </Route>
           </Route>
           <Route exact path='teams' element={<Teams/>}>
           </Route>
