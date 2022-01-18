@@ -9,6 +9,7 @@ const Teams = () => {
     const [fetchTeams, isLoading, error] = useFetching(async () => {
         const response = await ApiService.getAllTeams()
         setTeams(response.data.teams)
+        console.log(response.data.teams)
     })
     
     useEffect(() => {

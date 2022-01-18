@@ -9,3 +9,8 @@
     [data-theme="dark"] .siteLayout .site-layout-background {
       background: #141414;
     }
+
+.sidebar {
+  height: 100vh;
+  margin-right: 24px;
+}

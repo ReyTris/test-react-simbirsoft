@@ -16,8 +16,8 @@ export default class ApiService {
         const response = await $axios.get('teams')
         return response
     }
-    static async getCompetitionTeams(id) {
-        const response = await $axios.get(`competitions/${id}/teams`)
+    static async getCompetitionMatches(id) {
+        const response = await $axios.get(`competitions/${id}/matches`)
         return response
     }
 }

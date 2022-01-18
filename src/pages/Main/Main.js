@@ -13,6 +13,10 @@ const Main = () => {
         <div>
             <Layout hasSider>
             <Sider
+            className={styles.sidebar}
+            breakpoint={"sm"}
+            collapsedWidth={0}
+            trigger={null}
             style={{
                 overflow: 'auto',
                 height: '100vh',
@@ -35,7 +39,7 @@ const Main = () => {
                 </Menu.Item>
             </Menu>
             </Sider>
-            <Layout className={styles.siteLayout} style={{ marginLeft: 200 }}>
+            <Layout className={styles.siteLayout} xs={{marginLeft: 0}} style={{ marginLeft: 200 }}>
             <Header className={styles.siteLayoutBackground} style={{ padding: 0 }} />
             <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
                 <div className={styles.siteLayoutBackground} style={{ padding: 24, textAlign: 'center' }}>

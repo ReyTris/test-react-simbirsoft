@@ -4,16 +4,7 @@ import ViewButton from '../UI/Buttons/ViewButton';
 import {useNavigate } from 'react-router-dom';
 const CompetitionsList = ({leagues}) => {
 
-    // const getTeams= (id) => {
-    //     const [fetchCompetitionsTeams, isLoading, error] = useFetching(async () => {
-    //         const competitions = await ApiService.getCompetitionTeams()
-    //         setLeagues(competitions.data.competitions)
-    //     })
-
-    //     useEffect(() => {
-    //         fetchCompetitionsTeams(id)
-    //     })
-    // }
+    
     const router = useNavigate()
     
     const columns = [
@@ -29,7 +20,7 @@ const CompetitionsList = ({leagues}) => {
             width: 200,
             onCell:(record, rowIndex) => {
                 return {
-                  onClick: event => {router(`/competitions/${record.key}/teams`)}
+                  onClick: event => {router(`/competitions/${record.key}/matches`)}
                 };
             },
             render: () => 

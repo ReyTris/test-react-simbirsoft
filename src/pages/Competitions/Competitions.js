@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import CompetitionsList from '../../components/CompetitionsList/CompetitionsList';
 import { useFetching } from '../../components/hooks/useFetching';
 import Loader from '../../components/UI/Loader/Loader';
@@ -14,6 +15,7 @@ const Competitions = () => {
     
     useEffect(() => {
         fetchCompetitions()
+        console.log(leagues)
     },[])
 
     return (
@@ -27,7 +29,6 @@ const Competitions = () => {
                     <CompetitionsList leagues={leagues}/>
                 </div>
             }
-            
         </div>
     )
 }
