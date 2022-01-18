@@ -1,58 +1,35 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Layout } from "antd";
+import TopicMenu from "../../components/TopicMenu/TopicMenu";
+import NavBar from "../../components/NavBar/NavBar";
+import SideBar from "../../components/SideBar/SideBar";
 import { Outlet, Link } from 'react-router-dom'
-import { Layout, Menu } from 'antd';
-import {
-    UserOutlined,
-    VideoCameraOutlined,
-} from '@ant-design/icons';
-import styles from './Main.module.css'
 
-const { Header, Content, Footer, Sider } = Layout;
-const Main = () => {
-    return (
-        <div>
-            <Layout hasSider>
-            <Sider
-            className={styles.sidebar}
-            breakpoint={"sm"}
-            collapsedWidth={0}
-            trigger={null}
-            style={{
-                overflow: 'auto',
-                height: '100vh',
-                position: 'fixed',
-                left: 0,
-                top: 0,
-                bottom: 0,
-            }}
-            >
-            <div className={styles.logo} />
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-                <Menu.Item key="1" icon={<UserOutlined />}>
-                    <Link to="/">Главная</Link>
-                </Menu.Item>
-                <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                    <Link to="competitions">Лиги</Link>
-                </Menu.Item>
-                <Menu.Item key="3" icon={<VideoCameraOutlined />}>
-                    <Link to="teams">Команды</Link>
-                </Menu.Item>
-            </Menu>
-            </Sider>
-            <Layout className={styles.siteLayout} xs={{marginLeft: 0}} style={{ marginLeft: 200 }}>
-            <Header className={styles.siteLayoutBackground} style={{ padding: 0 }} />
-            <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-                <div className={styles.siteLayoutBackground} style={{ padding: 24, textAlign: 'center' }}>
-                    <Outlet/>
-                </div>
-            </Content>
-            <Footer style={{ textAlign: 'center' }}>
-                    Football Statistics ©2022 Created by Samson (<a href="mailto:reytris666@gmail.com">reytris666@gmail.com</a>)
-            </Footer>
-            </Layout>
-        </Layout>
-        </div>
-    )
+
+function Main() {
+  const topics = [<Link to="/">Главная</Link>, <Link to="competitions">Лиги</Link>, <Link to="teams">Команды</Link>];
+  const [selectedKey, setSelectedKey] = useState("0");
+  const changeSelectedKey = (event) => {
+    const key = event.key;
+    setSelectedKey(key);
+  };
+  const Menu = (
+    <TopicMenu
+      topics={topics}
+      selectedKey={selectedKey}
+      changeSelectedKey={changeSelectedKey}
+    />
+  );
+  return (
+    <div className="App">
+      <NavBar menu={Menu} />
+      <Layout>
+        <SideBar menu={Menu} />
+        <Layout.Content className="content">
+          <Outlet/>
+        </Layout.Content>
+      </Layout>
+    </div>
+  );
 }
-
-export default Main
+export default Main;
