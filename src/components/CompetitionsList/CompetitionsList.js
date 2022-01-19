@@ -7,12 +7,27 @@ const CompetitionsList = ({leagues}) => {
     const router = useNavigate()
     const columns = [
         {
-            title: 'Лига',
+            title: 'Название Лиги',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'Action',
+            title: 'Место проведения',
+            dataIndex: 'area',
+            key: 'area',
+        },
+        {
+            title: 'Начало сезона',
+            dataIndex: 'start',
+            key: 'start',
+        },
+        {
+            title: 'Конец сезона',
+            dataIndex: 'end',
+            key: 'end',
+        },
+        {
+            title: 'Просмотр участников',
             key: 'operation',
             fixed: 'right',
             width: 200,
@@ -28,7 +43,10 @@ const CompetitionsList = ({leagues}) => {
     const nameLeague = leagues.map(league => {
         return {
             key: league.id, 
-            name: league.name
+            name: league.name,
+            area: league.area.name,
+            start: league.currentSeason.startDate,
+            end: league.currentSeason.endDate,
         }
     })
     return (

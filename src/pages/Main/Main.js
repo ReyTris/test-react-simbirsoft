@@ -18,6 +18,7 @@ function Main() {
       topics={topics}
       selectedKey={selectedKey}
       changeSelectedKey={changeSelectedKey}
+      onBack={() => null}
     />
   );
   return (
