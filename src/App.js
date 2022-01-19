@@ -5,6 +5,7 @@ import Main from './pages/Main/Main';
 import Teams from './pages/Teams/Teams';
 import './App.css';
 import 'antd/dist/antd.css';
+import TeamMatches from './pages/TeamMatches/TeamMatches';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path='competitions/:id/matches' element={<CompetitionMatches/>}/>
           <Route exact path='teams' element={<Teams/>}>
           </Route>
+          <Route exact path='teams/:id/matches' element={<TeamMatches/>}/>
         </Route>
       </Routes>
     </div>

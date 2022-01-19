@@ -1,54 +1,57 @@
 import {React} from 'react'
-import { Table } from 'antd';
+import { Image, Table } from 'antd';
 import { Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import {useNavigate } from 'react-router-dom';
-const CompetitionsList = ({leagues}) => {
+
+
+const TeamsList = ({teams}) => {
 
     const router = useNavigate()
     const columns = [
+        {
+            title: 'Лого',
+            dataIndex: 'image',
+            key: 'image',
+            render: (image) => <Image style={{height: '50px'}} src={image}/>
+        },
         {
             title: 'Название Лиги',
             dataIndex: 'name',
             key: 'name',
         },
         {
-            title: 'Место проведения',
+            title: 'Страна',
             dataIndex: 'area',
             key: 'area',
             responsive: ["md"]
         },
         {
-            title: 'Начало сезона',
-            dataIndex: 'start',
-            key: 'start',
-        },
-        {
-            title: 'Конец сезона',
-            dataIndex: 'end',
-            key: 'end',
+            title: 'Стадион',
+            dataIndex: 'venue',
+            key: 'venue',
             responsive: ["md"]
         },
         {
-            title: 'Просмотр участников',
+            title: 'Просмотр игр',
             key: 'operation',
             fixed: 'right',
             width: 200,
             onCell:(record, rowIndex) => {
                 return {
-                  onClick: event => {router(`/competitions/${record.key}/matches`)}
+                  onClick: event => {router(`/teams/${record.key}/matches`)}
                 };
             },
-            render: () => <div style={{display: 'flex', justifyContent: 'center'}}><Button type="primary" shape="circle" icon={<SearchOutlined />} /></div>
+            render: () => <div><Button style={{marginLeft: '25%'}} type="primary" shape="circle" icon={<SearchOutlined />} /></div>
         },
       ];
-    const nameLeague = leagues.map(league => {
+    const nameLeague = teams.map(team => {
         return {
-            key: league.id, 
-            name: league.name,
-            area: league.area.name,
-            start: league.currentSeason.startDate,
-            end: league.currentSeason.endDate,
+            key: team.id,
+            name: team.name,
+            image: team.crestUrl,
+            area: team.area.name,
+            venue: team.venue
         }
     })
     return (
@@ -62,4 +65,4 @@ const CompetitionsList = ({leagues}) => {
     )
 }
 
-export default CompetitionsList
+export default TeamsList
