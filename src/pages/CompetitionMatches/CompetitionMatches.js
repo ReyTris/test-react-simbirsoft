@@ -5,8 +5,11 @@ import CompetitionMatchCard from '../../components/CompetitionMatchCard/Competit
 import { useFetching } from '../../components/hooks/useFetching'
 import Loader from '../../components/UI/Loader/Loader'
 import ApiService from '../../http/api'
+import { Pagination } from 'antd';
 
-const CompetitionTeam = () => {
+import styles from './CompetitionMatches.module.css'
+
+const CompetitionMatch = () => {
     const params = useParams()
     const [matches, setMatches] = useState([])
     const [nameLeague, setNameLeague] = useState([])
@@ -18,6 +21,7 @@ const CompetitionTeam = () => {
     
     useEffect(() => {
         fetchCompetitionsMatches()
+        console.log(matches)
     }, [])
     return ( 
         <div>
@@ -27,24 +31,24 @@ const CompetitionTeam = () => {
                 ?   <div style={{display:'flex', justifyContent: 'center'}}>
                         <Loader/>
                     </div>
-        
-                :   <div>
-                        <CompetitionMatchCard nameLeague={nameLeague} matches={matches}/>
+
+                :   <div className="">
+                        <div className={styles.cardsBlock}>
+                            {
+                                matches.map(match => {
+                                    return (
+                                        <div key={match.id}>
+                                            <CompetitionMatchCard nameLeague={nameLeague} match={match}/>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                        <Pagination defaultCurrent={1} defaultPageSize={9} total={50} />
                     </div>
-                // :   <div>
-                //         {
-                //             matches.map(match => {
-                //                 return (
-                //                     <div>
-                //                         <CompetitionMatchCard nameLeague={nameLeague} match={match}/>
-                //                     </div>
-                //                 )
-                //             })
-                //         }
-                //     </div>
             }
         </div>
     )
 }
 
-export default CompetitionTeam
+export default CompetitionMatch

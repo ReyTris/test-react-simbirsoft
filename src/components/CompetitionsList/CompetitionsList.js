@@ -4,9 +4,7 @@ import ViewButton from '../UI/Buttons/ViewButton';
 import {useNavigate } from 'react-router-dom';
 const CompetitionsList = ({leagues}) => {
 
-    
     const router = useNavigate()
-    
     const columns = [
         {
             title: 'Лига',
