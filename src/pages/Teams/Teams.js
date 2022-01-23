@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useState } from 'react';
 import { useFetching } from '../../components/hooks/useFetching';
 import TeamsList from '../../components/TeamsList/TeamsList';
@@ -19,7 +19,7 @@ const Teams = () => {
 
     return (
         <div>
-            {error && <h1>Error ${error}</h1>}
+            {error && <h1>Данные не удалось получить</h1>}
             {isLoading
                 ?   <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <Loader />

@@ -5,9 +5,12 @@ import { useFetching } from '../../components/hooks/useFetching'
 import Loader from '../../components/UI/Loader/Loader'
 import ApiService from '../../http/api'
 import { Pagination, Button } from 'antd';
+import SearchInput, {createFilter} from 'react-search-input'
 
 import styles from './TeamMatches.module.css'
 import TeamMatchCard from '../../components/TeamMatchCard/TeamMatchCard'
+
+const KEYS_TO_FILTERS = ['awayTeam.name', 'homeTeam.name', 'utcDate']
 
 const TeamMatches = () => {
     const params = useParams()
@@ -26,13 +29,22 @@ const TeamMatches = () => {
         setMinValue((value - 1) * numEachPage)
         setMaxValue(value * numEachPage)
     }
+    
+    const [searchTerm, setSearchTerm] = useState('')
+    
 
+    const filteredEmails = matches.filter(createFilter(searchTerm, KEYS_TO_FILTERS))
+
+    
+    function searchUpdated(term) {
+        setSearchTerm(term)
+      }
     useEffect(() => {
         fetchCompetitionsMatches()
     }, [])
     return (
         <div>
-            {error && <h1>Error ${error}</h1>}
+            {error && <h1>Данные не удалось получить</h1>}
             {isLoading
 
                 ? <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -47,9 +59,10 @@ const TeamMatches = () => {
                     >
                         Назад
                     </Button>
+                    <SearchInput className="search-input" onChange={searchUpdated} />
                     <div className={styles.cardsBlock}>
                         {
-                            matches.slice(minValue, maxValue).map(match => {
+                            filteredEmails.slice(minValue, maxValue).map(match => {
                                 return (
                                     <div key={match.id}>
                                         <TeamMatchCard match={match} />

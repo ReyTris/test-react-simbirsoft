@@ -26,7 +26,8 @@
 }
 
 .away, .home {
-    max-width: 150px
+    font-size: 18px;
+    max-width: 150px;
 }
 
 @media (max-width: 1200px) {
