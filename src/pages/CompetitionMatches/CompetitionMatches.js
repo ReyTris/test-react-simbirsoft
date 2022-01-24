@@ -6,8 +6,11 @@ import { useFetching } from '../../components/hooks/useFetching'
 import Loader from '../../components/UI/Loader/Loader'
 import ApiService from '../../http/api'
 import { Pagination, Button } from 'antd';
+import SearchInput, {createFilter} from 'react-search-input'
 
 import styles from './CompetitionMatches.module.css'
+
+const KEYS_TO_FILTERS = ['awayTeam.name', 'homeTeam.name', 'utcDate']
 
 const CompetitionMatch = () => {
     const params = useParams()
@@ -16,6 +19,7 @@ const CompetitionMatch = () => {
     const [nameLeague, setNameLeague] = useState([])
     const [minValue, setMinValue] = useState(0)
     const [maxValue, setMaxValue] = useState(12)
+    const [searchTerm, setSearchTerm] = useState('')
     const [fetchCompetitionsMatches, isLoading, error] = useFetching(async () => {
         const response = await ApiService.getCompetitionMatches(params.id)
         setMatches(response.data.matches)
@@ -28,10 +32,15 @@ const CompetitionMatch = () => {
         setMinValue((value - 1) * numEachPage)
         setMaxValue(value * numEachPage)
     }
+    
+    const filteredLeagues = matches.filter(createFilter(searchTerm, KEYS_TO_FILTERS)) 
+
+    function searchUpdated(term) {
+        setSearchTerm(term)
+    }
 
     useEffect(() => {
         fetchCompetitionsMatches()
-        console.log(matches)
     }, [])
     return (
         <div>
@@ -50,9 +59,10 @@ const CompetitionMatch = () => {
                     >
                         Назад
                     </Button>
+                    <SearchInput style={{marginBottom: '20px'}} onChange={searchUpdated} />
                     <div className={styles.cardsBlock}>
                         {
-                            matches.slice(minValue, maxValue).map(match => {
+                            filteredLeagues.slice(minValue, maxValue).map(match => {
                                 return (
                                     <div key={match.id}>
                                         <CompetitionMatchCard nameLeague={nameLeague} match={match} />

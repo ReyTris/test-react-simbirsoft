@@ -1,6 +1,5 @@
 import {React} from 'react'
-import { Table } from 'antd';
-import { Button } from 'antd';
+import { Table, Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import {useNavigate } from 'react-router-dom';
 const CompetitionsList = ({leagues}) => {

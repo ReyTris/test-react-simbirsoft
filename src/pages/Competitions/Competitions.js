@@ -35,7 +35,6 @@ const Competitions = () => {
     
     useEffect(() => {
         fetchCompetitions()
-        console.log(leagues)
     },[])
 
     return (

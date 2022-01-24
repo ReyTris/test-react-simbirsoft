@@ -3,7 +3,6 @@ import { Image, Table } from 'antd';
 import { Button } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import {useNavigate } from 'react-router-dom';
-import SearchInput, {createFilter} from 'react-search-input'
 
 
 const TeamsList = ({teams}) => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useFetching } from '../../components/hooks/useFetching';
 import TeamsList from '../../components/TeamsList/TeamsList';
@@ -10,7 +10,6 @@ const Teams = () => {
     const [fetchTeams, isLoading, error] = useFetching(async () => {
         const response = await ApiService.getAllTeams()
         setTeams(response.data.teams)
-        console.log(response.data.teams)
     })
 
     useEffect(() => {

@@ -18,6 +18,7 @@ const TeamMatches = () => {
     const [matches, setMatches] = useState([])
     const [minValue, setMinValue] = useState(0)
     const [maxValue, setMaxValue] = useState(12)
+    const [searchTerm, setSearchTerm] = useState('')
     const [fetchCompetitionsMatches, isLoading, error] = useFetching(async () => {
         const response = await ApiService.getTeamMatches(params.id)
         setMatches(response.data.matches)
@@ -29,16 +30,13 @@ const TeamMatches = () => {
         setMinValue((value - 1) * numEachPage)
         setMaxValue(value * numEachPage)
     }
-    
-    const [searchTerm, setSearchTerm] = useState('')
-    
 
     const filteredEmails = matches.filter(createFilter(searchTerm, KEYS_TO_FILTERS))
 
-    
     function searchUpdated(term) {
         setSearchTerm(term)
-      }
+    }
+
     useEffect(() => {
         fetchCompetitionsMatches()
     }, [])
@@ -59,7 +57,7 @@ const TeamMatches = () => {
                     >
                         Назад
                     </Button>
-                    <SearchInput className="search-input" onChange={searchUpdated} />
+                    <SearchInput style={{marginBottom: '20px'}} onChange={searchUpdated} />
                     <div className={styles.cardsBlock}>
                         {
                             filteredEmails.slice(minValue, maxValue).map(match => {

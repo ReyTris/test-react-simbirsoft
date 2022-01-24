@@ -24,7 +24,6 @@ const NavBar = ({ menu }) => {
             > 
                 {menu}
             </Drawer>
-            {/* <a href="/"><img src={logo} className={styles.logo} alt="logo" /></a>      */}
             </nav>
         </div>
     )
