@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/test-react-simbirsoft/static/css/main.af485669.css",
-    "main.js": "/test-react-simbirsoft/static/js/main.544e64b6.js",
-    "static/media/2.jpg": "/test-react-simbirsoft/static/media/2.ec3696d8c5cf156ca859.jpg",
-    "static/media/ball.gif": "/test-react-simbirsoft/static/media/ball.fa1cc33e821f6b630b2d.gif",
-    "index.html": "/test-react-simbirsoft/index.html",
-    "main.af485669.css.map": "/test-react-simbirsoft/static/css/main.af485669.css.map",
-    "main.544e64b6.js.map": "/test-react-simbirsoft/static/js/main.544e64b6.js.map"
+    "main.css": "/static/css/main.92c46631.css",
+    "main.js": "/static/js/main.544e64b6.js",
+    "static/media/2.jpg": "/static/media/2.ec3696d8c5cf156ca859.jpg",
+    "static/media/ball.gif": "/static/media/ball.fa1cc33e821f6b630b2d.gif",
+    "index.html": "/index.html",
+    "main.92c46631.css.map": "/static/css/main.92c46631.css.map",
+    "main.544e64b6.js.map": "/static/js/main.544e64b6.js.map"
   },
   "entrypoints": [
-    "static/css/main.af485669.css",
+    "static/css/main.92c46631.css",
     "static/js/main.544e64b6.js"
   ]
 }
